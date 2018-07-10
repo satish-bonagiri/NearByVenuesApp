@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.satti.fs.android.nbv"
-        minSdkVersion rootProject.ext.compileSdkVersion
+        minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"

@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -90,7 +89,6 @@ public class BaseFragment extends Fragment {
                 super.onLocationResult(locationResult);
                 // location is received
                 mCurrentLocation = locationResult.getLastLocation();
-                Log.e("SATTI",mCurrentLocation.toString());
                 nbvLocationListener.onLocationUpdate(mCurrentLocation);
                 stopLocationUpdates();
                 hideProgressDialog();
