@@ -34,11 +34,11 @@ ext {
     buildToolsVersion = '27.0.3'
 
     // App dependencies
-    supportLibraryVersion = '25.3.0'
+    supportLibraryVersion = '25.3.1'
     supportLibrarylatestVersion = '27.1.1'
 
     gsonVersion = '2.8.0'
-    servicesVersion = '10.2.0'
+    servicesVersion = '15.0.1'
 
     // testing
     junitVersion = '4.12'

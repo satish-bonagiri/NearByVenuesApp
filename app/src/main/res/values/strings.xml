@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Near By Venues</string>
+
+    <string name="current_location_hint">Current Location coordinates</string>
+    <string name="getting_current_location">getting the current location,please wait.</string>
+    <string name="please_turn_on_network">Please turn on Network.</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
 </resources>

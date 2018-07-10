@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -48,5 +52,12 @@ dependencies {
     androidTestImplementation group: "com.android.support", name: "support-annotations", version: rootProject.supportLibraryVersion
     androidTestImplementation group: "com.android.support.test", name: "runner", version: rootProject.runnerVersion
     androidTestImplementation group: "com.android.support.test.espresso", name: "espresso-core", version: rootProject.espressoVersion
+
+    //google play services
+    implementation group: "com.google.android.gms", name: "play-services-location", version: rootProject.servicesVersion
+
+    // dexter runtime permissions
+    implementation 'com.karumi:dexter:4.2.0'
+
 
 }
