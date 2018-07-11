@@ -10,7 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.satti.fs.android.nbv.R;
+import com.satti.fs.android.nbv.adapter.AdapterModel;
 import com.satti.fs.android.nbv.location.NBVLocationListener;
+import com.satti.fs.android.nbv.network.client.NBVRetrofitNetworkClient;
+import com.satti.fs.android.nbv.network.service.RetrofitOnDownloadListener;
+import com.satti.fs.android.nbv.util.ProgressUtil;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +25,7 @@ import butterknife.ButterKnife;
  * Created by satish on 10/07/18.
  */
 
-public class VenueListingFragment extends BaseFragment{
+public class VenueListingFragment extends BaseFragment implements RetrofitOnDownloadListener{
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -30,6 +36,10 @@ public class VenueListingFragment extends BaseFragment{
     @BindView(R.id.currentLocation_textview)
     TextView currentLocatinTextView;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,14 +51,28 @@ public class VenueListingFragment extends BaseFragment{
     }
 
 
+
+
+
+    private void downloadFeed() {
+        ProgressUtil.displayProgressDialog(getActivity(), new ProgressUtil.DialogListener() {
+            @Override
+            public void onButtonPressed() {
+
+            }
+        });
+        NBVRetrofitNetworkClient.getNearByVenues(this);
+    }
+
     NBVLocationListener nbvLocationListener = (location) ->{
         if(location != null)
             currentLocatinTextView.setText(location.toString());
-
+        downloadFeed();
     };
 
 
-
-
-
+    @Override
+    public void onDownloadComplete(List<AdapterModel> nearByVenues) {
+        ProgressUtil.hideProgressDialog();
+    }
 }
