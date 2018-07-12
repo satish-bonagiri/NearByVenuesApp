@@ -36,6 +36,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import com.satti.fs.android.nbv.BuildConfig;
 import com.satti.fs.android.nbv.R;
 import com.satti.fs.android.nbv.location.NBVLocationListener;
+import com.satti.fs.android.nbv.util.ProgressUtil;
 
 
 public class BaseFragment extends Fragment {
@@ -53,6 +54,7 @@ public class BaseFragment extends Fragment {
     private LocationCallback mLocationCallback;
     private Location mCurrentLocation;
 
+    private ProgressUtil progressUtil ;
     public BaseFragment() {
         // Required empty public constructor
     }
@@ -210,18 +212,13 @@ public class BaseFragment extends Fragment {
         alertDialog.show();
     }
 
-    private ProgressDialog dialog;
-
     private void showProgressDialog(){
-        dialog = new ProgressDialog(getActivity());
-        dialog.setMessage(getString(R.string.getting_current_location));
-        dialog.show();
+        progressUtil = new ProgressUtil();
+        progressUtil.displayProgressDialog(getActivity(), ()-> {},getString(R.string.getting_current_location));
     }
 
     private void hideProgressDialog(){
-        if (dialog.isShowing()) {
-            dialog.dismiss();
-        }
+        progressUtil.hideProgressDialog();
     }
 
     private  NBVLocationListener nbvLocationListener;
