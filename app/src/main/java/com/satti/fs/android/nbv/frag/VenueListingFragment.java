@@ -87,7 +87,7 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
 
 
     @Override
-    public void onDownloadComplete(List<Item> nearByVenuesItemList) {
+    public void onDownloadComplete(List<AdapterModel> nearByVenuesItemList) {
         progressUtil.hideProgressDialog();
         if(nearByVenuesItemList.size() == 0){
             updateUIOnError(getString(R.string.venues_not_available));
