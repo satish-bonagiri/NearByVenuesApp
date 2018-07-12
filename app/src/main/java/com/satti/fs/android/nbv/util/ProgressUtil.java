@@ -11,9 +11,9 @@ public class ProgressUtil {
 		void onButtonPressed();
 	}
 	
-	private static ProgressDialog sDialog;
+	private ProgressDialog sDialog;
 	
-	public static void displayProgressDialog(Context context, final DialogListener listener) {
+	public void displayProgressDialog(Context context, final DialogListener listener,String message) {
 		sDialog = new ProgressDialog(context){
 		
 			public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -28,7 +28,7 @@ public class ProgressUtil {
 				}
 			}
 		};
-		sDialog.setMessage(" Please wait... ");
+		sDialog.setMessage(message);
 		try {
 			sDialog.show();
 		} catch (BadTokenException e) {
@@ -36,7 +36,7 @@ public class ProgressUtil {
 		}
 	}
 	
-	public static void hideProgressDialog() {
+	public void hideProgressDialog() {
 		if(sDialog != null && sDialog.isShowing()) {
 			sDialog.dismiss();
 			sDialog = null;
