@@ -9,4 +9,5 @@
     <string name="please_wait_msg">loading content..</string>
     <string name="venues_not_available">No Near By Venues available !!!</string>
     <string name="location_not_available">Sorry ,Not able to get your location !!!</string>
+    <string name="distance_in_meters">%d m</string>
 </resources>

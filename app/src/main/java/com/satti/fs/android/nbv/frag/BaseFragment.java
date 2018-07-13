@@ -214,7 +214,7 @@ public class BaseFragment extends Fragment {
 
     private void showProgressDialog(){
         progressUtil = new ProgressUtil();
-        progressUtil.displayProgressDialog(getActivity(), ()-> {},getString(R.string.getting_current_location));
+        progressUtil.displayProgressDialog(getActivity(),getString(R.string.getting_current_location));
     }
 
     private void hideProgressDialog(){

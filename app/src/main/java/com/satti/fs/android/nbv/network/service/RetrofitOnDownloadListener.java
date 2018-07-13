@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface RetrofitOnDownloadListener {
-    void onDownloadComplete(List<Item> nearByVenues);
+    void onDownloadComplete(List<AdapterModel> nearByVenues);
 }

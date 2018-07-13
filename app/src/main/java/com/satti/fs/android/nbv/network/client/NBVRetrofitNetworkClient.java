@@ -2,13 +2,16 @@ package com.satti.fs.android.nbv.network.client;
 
 import android.support.annotation.NonNull;
 
+import com.satti.fs.android.nbv.adapter.AdapterModel;
 import com.satti.fs.android.nbv.common.Constants;
+import com.satti.fs.android.nbv.network.entities.Category;
 import com.satti.fs.android.nbv.network.entities.FSResponse;
 import com.satti.fs.android.nbv.network.entities.Item;
 import com.satti.fs.android.nbv.network.entities.Meta;
 import com.satti.fs.android.nbv.network.service.NBVNetworkService;
 import com.satti.fs.android.nbv.network.service.RetrofitOnDownloadListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,18 +55,33 @@ public class NBVRetrofitNetworkClient {
                     int stausCode = metaData.getCode();
                     if (stausCode == 200) {
                         List<Item> itemList = response.body().getResponse().getGroups().get(0).getItems();
-                        retrofitOnDownloadListener.onDownloadComplete(itemList);
+                        ArrayList<AdapterModel> adapterModels = new ArrayList<AdapterModel>();
+                        if(itemList != null){
+                            for(int i=0 ; i < itemList.size() ;i++){
+                                AdapterModel adapterModel = new AdapterModel();
+                                adapterModel.setVenueName(itemList.get(i).getVenue().getName());
+                                adapterModel.setLocation(itemList.get(i).getVenue().getLocation());
+                                Category category = itemList.get(i).getVenue().getCategories().get(0);
+                                adapterModel.setCategoryIconUrl(category.getIcon().getPrefix()+"88"+ category.getIcon().getSuffix());
+                                adapterModel.setCategoryBgIconUrl(category.getIcon().getPrefix()+"bg_88"+category.getIcon().getSuffix());
+                                adapterModels.add(adapterModel);
+                            }
+                            retrofitOnDownloadListener.onDownloadComplete(adapterModels);
+                        }else{
+                            retrofitOnDownloadListener.onDownloadComplete(null);
+                        }
                     } else {
                         retrofitOnDownloadListener.onDownloadComplete(null);
                     }
-                } else {//something wrong happened here
+                } else {
                     retrofitOnDownloadListener.onDownloadComplete(null);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<FSResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<FSResponse> call, @NonNull Throwable t) {
                 retrofitOnDownloadListener.onDownloadComplete(null);
+                t.printStackTrace();
             }
         });
 
