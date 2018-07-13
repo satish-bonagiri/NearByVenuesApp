@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.satti.fs.android.nbv.R;
-import com.satti.fs.android.nbv.VenueDetailActivity;
+import com.satti.fs.android.nbv.activities.VenueDetailActivity;
 import com.satti.fs.android.nbv.adapter.AdapterModel;
 import com.satti.fs.android.nbv.adapter.VenuesAdapter;
 import com.satti.fs.android.nbv.location.NBVLocationListener;

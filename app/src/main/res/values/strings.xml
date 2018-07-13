@@ -14,7 +14,7 @@
 
 
     <string name="venue_detail_details">Venue Details</string>
-    <string name="venue_detail_name">Name :</string>
+    <string name="venue_detail_name">Venue Name :</string>
     <string name="venue_detail_address">Address :</string>
     <string name="venue_detail_distance">Distance :</string>
     <string name="venue_detail_postal_code">PostalCode :</string>

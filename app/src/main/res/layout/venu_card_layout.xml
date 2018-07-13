@@ -32,9 +32,8 @@
                 android:layout_below="@id/venue_thumbnail_view"
                 android:paddingLeft="@dimen/padding_10"
                 android:paddingRight="@dimen/padding_10"
-                android:textColor="@color/venue_name_color"
-                android:textSize="@dimen/text_size_15"
-                android:text="gaaaa"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_size_17" />
 
             <TextView
                 android:id="@+id/distance_textView"
@@ -44,8 +43,8 @@
                 android:paddingBottom="@dimen/padding_5"
                 android:paddingLeft="@dimen/padding_10"
                 android:paddingRight="@dimen/padding_10"
-                android:textSize="@dimen/text_size_12"
-                android:text="adasdsa"/>
+                android:textSize="@dimen/text_size_15"
+                android:textColor="@color/default_text_color" />
 
 
         </RelativeLayout>

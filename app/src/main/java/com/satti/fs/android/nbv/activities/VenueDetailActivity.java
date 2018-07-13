@@ -1,4 +1,4 @@
-package com.satti.fs.android.nbv;
+package com.satti.fs.android.nbv.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.satti.fs.android.nbv.R;
 import com.satti.fs.android.nbv.adapter.AdapterModel;
 import com.satti.fs.android.nbv.common.Constants;
 

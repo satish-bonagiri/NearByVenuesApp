@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.satti.fs.android.nbv.VenueDetailActivity"
+    tools:context="com.satti.fs.android.nbv.activities.VenueDetailActivity"
     tools:showIn="@layout/activity_venue_detail">
 
     <LinearLayout
@@ -22,45 +22,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/venue_detail_name"/>
+            android:text="@string/venue_detail_name"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_name_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/venue_detail_address"/>
+            android:text="@string/venue_detail_address"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_address_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/venue_detail_distance"/>
+            android:text="@string/venue_detail_distance"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_distance_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
         <TextView
@@ -68,59 +74,68 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_postal_code_label_textView"
-            android:text="@string/venue_detail_postal_code"/>
+            android:text="@string/venue_detail_postal_code"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_postal_code_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"
+            />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/venue_detail_city"/>
+            android:text="@string/venue_detail_city"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_city_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/venue_detail_state"/>
+            android:text="@string/venue_detail_state"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_state_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/venue_detail_country"/>
+            android:text="@string/venue_detail_country"
+            android:textColor="@color/default_text_color"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/venue_detail_country_textView"
-            android:layout_marginStart="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_10"/>
+            android:layout_marginStart="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
  
