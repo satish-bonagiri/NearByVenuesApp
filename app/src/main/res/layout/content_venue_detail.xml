@@ -67,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/venue_detail_postal_code_label_textView"
             android:text="@string/venue_detail_postal_code"/>
 
         <TextView

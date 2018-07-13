@@ -8,6 +8,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +35,9 @@ public class VenueDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.venue_detail_postal_code_textView)
     TextView mPostalCodeTextView;
+
+    @BindView(R.id.venue_detail_postal_code_label_textView)
+    TextView getmPostalCodeLabelTextView;
 
     @BindView(R.id.venue_detail_city_textView)
     TextView mCityTextView;
@@ -78,7 +83,16 @@ public class VenueDetailActivity extends AppCompatActivity {
             mNameTextView.setText(adapterModel.getVenueName());
             mAddressTextView.setText(adapterModel.getLocation().getFormattedAddress().toString());
             mDistanceTextView.setText(getResources().getString(R.string.distance_in_meters, adapterModel.getLocation().getDistance()));
-            mPostalCodeTextView.setText(adapterModel.getLocation().getPostalCode());
+
+            if(TextUtils.isEmpty(adapterModel.getLocation().getPostalCode())){
+                mPostalCodeTextView.setVisibility(View.GONE);
+                getmPostalCodeLabelTextView.setVisibility(View.GONE);
+            }else{
+                mPostalCodeTextView.setText(adapterModel.getLocation().getPostalCode());
+                getmPostalCodeLabelTextView.setVisibility(View.VISIBLE);
+                mPostalCodeTextView.setVisibility(View.VISIBLE);
+            }
+
             mCityTextView.setText(adapterModel.getLocation().getCity());
             mStateTextView.setText(adapterModel.getLocation().getState());
             mCountryTextView.setText(adapterModel.getLocation().getCountry());
