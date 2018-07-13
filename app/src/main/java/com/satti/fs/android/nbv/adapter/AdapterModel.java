@@ -2,11 +2,13 @@ package com.satti.fs.android.nbv.adapter;
 
 import com.satti.fs.android.nbv.network.entities.Location;
 
+import java.io.Serializable;
+
 /**
  * Created by satish on 11/07/18.
  */
 
-public class AdapterModel {
+public class AdapterModel implements Serializable{
 
     private String venueName;
     private String categoryIconUrl;

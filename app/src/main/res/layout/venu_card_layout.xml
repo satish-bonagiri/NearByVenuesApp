@@ -23,8 +23,6 @@
                 android:layout_height="@dimen/venue_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="@dimen/padding_5"
-                android:clickable="true"
-                android:focusable="true"
                 android:scaleType="fitXY" />
 
             <TextView
