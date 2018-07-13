@@ -61,16 +61,33 @@ public class VenuesAdapter extends RecyclerView.Adapter<VenuesAdapter.ViewHolder
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView venueNameTextView, distanceTextView;
         public ImageView categoryImageView;
 
         public ViewHolder(View v) {
             super(v);
+            v.setOnClickListener(this);
             venueNameTextView = (TextView)v.findViewById(R.id.venue_name_textView);
             distanceTextView = (TextView)v.findViewById(R.id.distance_textView);
             categoryImageView = (ImageView)v.findViewById(R.id.venue_thumbnail_view);
         }
+
+        @Override
+        public void onClick(View view) {
+            clickListener.onItemClick(getAdapterPosition(), view);
+        }
     }
+
+    private static ClickListener clickListener;
+    public void setOnItemClickListener(ClickListener clickListener) {
+        VenuesAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
+    }
+
+
 }

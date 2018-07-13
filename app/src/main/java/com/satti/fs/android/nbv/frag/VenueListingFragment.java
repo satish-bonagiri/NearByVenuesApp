@@ -1,7 +1,9 @@
 package com.satti.fs.android.nbv.frag;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.satti.fs.android.nbv.R;
+import com.satti.fs.android.nbv.VenueDetailActivity;
 import com.satti.fs.android.nbv.adapter.AdapterModel;
 import com.satti.fs.android.nbv.adapter.VenuesAdapter;
 import com.satti.fs.android.nbv.location.NBVLocationListener;
@@ -25,6 +28,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.satti.fs.android.nbv.common.Constants.INTENT_BUNDLE_DATA;
 
 /**
  * Created by satish on 10/07/18.
@@ -69,10 +74,15 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
 
 //        RecyclerView.LayoutManager mStaggeredLayoutManager = new StaggeredGridLayoutManager(2,1);
 //        mVenuesRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-        //mVenuesRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mVenuesRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //mVenuesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        VenuesAdapter.ClickListener clickListener = (position ,v)->{
+            Intent detailIntent = new Intent(getActivity(), VenueDetailActivity.class);
+            detailIntent.putExtra(INTENT_BUNDLE_DATA,adapterModelList.get(position));
+            startActivity(detailIntent);
+        };
+        mVenuesAdapter.setOnItemClickListener(clickListener);
         mVenuesRecyclerView.setAdapter(mVenuesAdapter);
-
         return root;
     }
 
@@ -91,7 +101,11 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
             stringBuilder.append(",");
             stringBuilder.append(location.getLongitude());
 
-            downloadFeed(stringBuilder.toString());
+            if(adapterModelList != null && adapterModelList.size() > 0){
+                //data already is there !
+            }else{
+                downloadFeed(stringBuilder.toString());
+            }
         }else{
             Log.e(TAG,"Not able to read the current location ");
             updateUIOnError(getString(R.string.location_not_available));

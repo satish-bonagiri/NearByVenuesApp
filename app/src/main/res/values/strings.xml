@@ -10,4 +10,18 @@
     <string name="venues_not_available">No Near By Venues available !!!</string>
     <string name="location_not_available">Sorry ,Not able to get your location !!!</string>
     <string name="distance_in_meters">%d m</string>
+    <string name="title_activity_venue_detail">VenueDetailActivity</string>
+
+
+    <string name="venue_detail_details">Venue Details</string>
+    <string name="venue_detail_name">Name :</string>
+    <string name="venue_detail_address">Address :</string>
+    <string name="venue_detail_distance">Distance :</string>
+    <string name="venue_detail_postal_code">PostalCode :</string>
+    <string name="venue_detail_city">City :</string>
+    <string name="venue_detail_state">State :</string>
+    <string name="venue_detail_country">Country :</string>
+
+
+    <string name="content_description">venue image</string>
 </resources>

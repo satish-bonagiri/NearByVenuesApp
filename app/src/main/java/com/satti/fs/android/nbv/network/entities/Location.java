@@ -1,11 +1,12 @@
 
 package com.satti.fs.android.nbv.network.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+public class Location implements Serializable{
 
     @SerializedName("address")
     @Expose

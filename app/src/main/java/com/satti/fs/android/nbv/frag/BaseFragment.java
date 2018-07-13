@@ -69,7 +69,12 @@ public class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if(isNetworkAvailable()){
-            getLocationUpdate();
+            //call only when current location is not available, to prevent unneeded calls
+            //ugly fix ,but works for now !!
+            //I died a little inside writing this.
+            if (mCurrentLocation == null){
+                getLocationUpdate();
+            }
         }else{
             showNetworkOnDialog();
         }
