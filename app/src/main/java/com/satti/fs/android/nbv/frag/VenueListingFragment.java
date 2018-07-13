@@ -1,8 +1,8 @@
 package com.satti.fs.android.nbv.frag;
 
-import android.location.Location;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,13 +13,14 @@ import android.widget.TextView;
 
 import com.satti.fs.android.nbv.R;
 import com.satti.fs.android.nbv.adapter.AdapterModel;
+import com.satti.fs.android.nbv.adapter.VenuesAdapter;
 import com.satti.fs.android.nbv.location.NBVLocationListener;
 import com.satti.fs.android.nbv.network.client.NBVRetrofitNetworkClient;
-import com.satti.fs.android.nbv.network.entities.Item;
 import com.satti.fs.android.nbv.network.service.RetrofitOnDownloadListener;
 import com.satti.fs.android.nbv.util.DateUtil;
 import com.satti.fs.android.nbv.util.ProgressUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,9 +37,6 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
     @BindView(R.id.venues_recyclerView)
     RecyclerView mVenuesRecyclerView;
 
-    @BindView(R.id.refresh_layout)
-    SwipeRefreshLayout mRefreshLayout;
-
     @BindView(R.id.no_near_by_venues_layout)
     LinearLayout mNoNearByVenuesLayout;
 
@@ -46,6 +44,9 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
     TextView mNoNearByVenuesTextView;
 
     ProgressUtil progressUtil;
+
+    private VenuesAdapter mVenuesAdapter;
+    List<AdapterModel> adapterModelList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,19 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
         View root =  inflater.inflate(R.layout.fragment_venu_listing, container, false);
         ButterKnife.bind(this, root);
         setLocationListener(nbvLocationListener);
+        adapterModelList = new ArrayList<>();
+        mVenuesAdapter = new VenuesAdapter(getActivity(),adapterModelList,getResources());
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        mVenuesRecyclerView.setLayoutManager(mLayoutManager);
 
+//        RecyclerView.LayoutManager mLinearLayoutManager = new LinearLayoutManager(getActivity());
+//        mVenuesRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+//        RecyclerView.LayoutManager mStaggeredLayoutManager = new StaggeredGridLayoutManager(2,1);
+//        mVenuesRecyclerView.setLayoutManager(mStaggeredLayoutManager);
+        //mVenuesRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        //mVenuesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mVenuesRecyclerView.setAdapter(mVenuesAdapter);
 
         return root;
     }
@@ -66,7 +79,7 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
 
     private void downloadFeed(String langlat) {
         progressUtil = new ProgressUtil();
-        progressUtil.displayProgressDialog(getActivity(), () ->{ },getString(R.string.please_wait_msg));
+        progressUtil.displayProgressDialog(getActivity(),getString(R.string.please_wait_msg));
         NBVRetrofitNetworkClient.getNearByVenues(this,DateUtil.currentDate(),langlat);
     }
 
@@ -93,7 +106,11 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
             updateUIOnError(getString(R.string.venues_not_available));
         }else{
             mNoNearByVenuesLayout.setVisibility(View.GONE);
-            mRefreshLayout.setVisibility(View.VISIBLE);
+            mVenuesRecyclerView.setVisibility(View.VISIBLE);
+
+            adapterModelList.addAll(nearByVenuesItemList);
+            mVenuesAdapter.setVenusList(adapterModelList);
+            mVenuesAdapter.notifyDataSetChanged();
         }
     }
 
@@ -101,7 +118,18 @@ public class VenueListingFragment extends BaseFragment implements RetrofitOnDown
     private void updateUIOnError(String errorMsg){
         mNoNearByVenuesTextView.setText(errorMsg);
         mNoNearByVenuesLayout.setVisibility(View.VISIBLE);
-        mRefreshLayout.setVisibility(View.GONE);
+        mVenuesRecyclerView.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+            mVenuesRecyclerView.setLayoutManager(mLayoutManager);
+        }else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+            mVenuesRecyclerView.setLayoutManager(mLayoutManager);
+        }
+    }
 }
