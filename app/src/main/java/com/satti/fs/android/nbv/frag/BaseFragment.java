@@ -71,6 +71,7 @@ public class BaseFragment extends Fragment {
         if(isNetworkAvailable()){
             //call only when current location is not available, to prevent unneeded calls
             //ugly fix ,but works for now !!
+            //I died a little inside writing this.
             if (mCurrentLocation == null){
                 getLocationUpdate();
             }
